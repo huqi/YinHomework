@@ -3,6 +3,7 @@
 #include <GL/glut.h>
 
 #include "motion.h"
+#include "BezierMotion.h"
 #include "OpenGLInitialization.h"
 #include "Interaction.h"
 #include "color.h"
@@ -11,8 +12,10 @@ using namespace std;
 
 void display(void)
 {
-	static Motion m;
-	m.readCtrlPositions("input.txt");
+	static BezierMotion bm;
+
+	Motion *mp = &bm;
+	mp->readCtrlPositions("input.txt");
 
 	::glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -23,8 +26,7 @@ void display(void)
 	::glRotated(Interaction::m_zRotate, 0.0, 0.0, 1.0);
 
 	::glMaterialfv(GL_FRONT,GL_DIFFUSE,BROWN);
-	m.drawCtrlPositions();
-
+	mp->drawCtrlPositions();
 	::glPopMatrix();
 
 	::glutSwapBuffers();

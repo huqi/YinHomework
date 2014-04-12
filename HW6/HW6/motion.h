@@ -13,7 +13,7 @@ public:
 	~Motion();
 	void readCtrlPositions(char *fileNameArg);
 	void writePositions(char *fileNameArg);
-	void drawCtrlPositions(void);
+	virtual void drawCtrlPositions(void);
 		
 
 public:
