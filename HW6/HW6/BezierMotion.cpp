@@ -68,7 +68,7 @@ void BezierMotion::drawCtrlPositions(void)
 	for (int i=0; i<curve.size(); i++)
 	{
 		homogeneousMatricesForCtrlPositions.push_back(curve[i].dualQuaternionToHomogeneousMatrix().transpose());
-		double MatrixforOpenGLStack[60];
+		double MatrixforOpenGLStack[16];
 
 		for (int i1=0; i1<4; i1++)
 			for (int i2=0; i2<4; i2++)
