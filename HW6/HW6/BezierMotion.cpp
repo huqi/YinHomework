@@ -28,10 +28,7 @@ DualQuaternion BezierMotion::calculatePir( int i, int r, double t)
 	}
 	else
 	{
-		DualQuaternion p1 = calculatePir(i,r-1,t);
-		DualQuaternion p2 = calculatePir(i+1,r-1,t);
-		
-		return p1+p2;
+		return calculatePir(i,r-1,t) + calculatePir(i+1,r-1,t);
 	}
 }
 
@@ -52,8 +49,7 @@ vector<DualQuaternion> BezierMotion::curvePointsComputation()
 			for ( int i = 0; i<= degree-r; i++)
 			{
 				DualQuaternion point = calculatePir( i, r, t);
-				if (r == degree && i == 0)
-					curve_points.push_back( point );
+				curve_points.push_back( point );
 			}
 		}
 	}
@@ -76,7 +72,7 @@ void BezierMotion::drawCtrlPositions(void)
 
 		::glPushMatrix();
 		::glMultMatrixd(MatrixforOpenGLStack);
-		glutSolidTeapot(0.30);
+		glutSolidTeapot(0.15);
 		::glPopMatrix();
 	}
 
