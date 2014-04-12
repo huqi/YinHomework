@@ -44,6 +44,7 @@ vector<DualQuaternion> BezierMotion::curvePointsComputation()
 {
 	vector< DualQuaternion > curve_points;
 	int degree = numberOfPositions-1;
+
 	for ( double t = 0.00; t < 1.00; t += 0.07)
 	{
 		for ( int r = 0; r <= degree; r++ )
@@ -54,9 +55,7 @@ vector<DualQuaternion> BezierMotion::curvePointsComputation()
 				if (r == degree && i == 0)
 					curve_points.push_back( point );
 			}
-
 		}
-
 	}
 
 	return curve_points;
