@@ -8,6 +8,7 @@ public:
 	BezierMotion(void);
 	~BezierMotion(void);
 	void drawCtrlPositions(void);
+private:
 	DualQuaternion calculatePir( int i, int r, double t);
 	DualQuaternion getControlPoints( int i );
 	vector<DualQuaternion> curvePointsComputation(void);
