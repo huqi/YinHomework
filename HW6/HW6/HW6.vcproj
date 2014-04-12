@@ -175,6 +175,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BSplineMotion.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\color.cpp"
 				>
 			</File>
@@ -226,6 +230,10 @@
 			>
 			<File
 				RelativePath=".\BezierMotion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BSplineMotion.h"
 				>
 			</File>
 			<File
