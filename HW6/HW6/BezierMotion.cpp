@@ -34,13 +34,13 @@ DualQuaternion BezierMotion::calculatePir( int i, int r, double t)
 
 DualQuaternion BezierMotion::getControlPoints( int i )
 {
-	return ctrlPos.at(i);
+	return GetCtrlPosAt(i);
 }
 
 vector<DualQuaternion> BezierMotion::curvePointsComputation()
 {
 	vector< DualQuaternion > curve_points;
-	int degree = numberOfPositions-1;
+	int degree = GetNunberOfPositions()-1;
 
 	for ( double t = 0.00; t < 1.00; t += 0.04)
 	{
@@ -69,7 +69,7 @@ void BezierMotion::drawCtrlPositions(void)
 
 		for (int i1=0; i1<4; i1++)
 			for (int i2=0; i2<4; i2++)
-				MatrixforOpenGLStack[4*i1+i2] =  homogeneousMatricesForCtrlPositions.at(i).m[i1][i2];
+				MatrixforOpenGLStack[4*i1+i2] =  homogeneousMatricesForCtrlPositions.at(i).GetM(i1, i2);
 
 		::glPushMatrix();
 		::glMultMatrixd(MatrixforOpenGLStack);

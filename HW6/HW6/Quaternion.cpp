@@ -174,15 +174,26 @@ Matrix Quaternion::quaternionToRotationMatrix()
     Matrix R(3,3);
 	double k;
 	k = q[0]*q[0] + q[1]*q[1] + q[2]*q[2] + q[3]*q[3];
-    R.m[0][0] = (q[0]*q[0] - q[1]*q[1] - q[2]*q[2] + q[3]*q[3])/k;
-	R.m[0][1] = 2*(q[0]*q[1] - q[2]*q[3])/k;
-	R.m[0][2] = 2*(q[0]*q[2] + q[1]*q[3])/k;
-	R.m[1][0] = 2*(q[0]*q[1] + q[2]*q[3])/k;
-	R.m[1][1] = (- q[0]*q[0] + q[1]*q[1] - q[2]*q[2] + q[3]*q[3])/k;
-	R.m[1][2] = 2*(q[1]*q[2] - q[0]*q[3])/k;
-	R.m[2][0] = 2*(q[0]*q[2] - q[1]*q[3])/k;
-	R.m[2][1] = 2*(q[1]*q[2] + q[0]*q[3])/k;
-	R.m[2][2] = (- q[0]*q[0] - q[1]*q[1] + q[2]*q[2] + q[3]*q[3])/k;
+
+	R.SetM(0, 0, (q[0]*q[0] - q[1]*q[1] - q[2]*q[2] + q[3]*q[3])/k);
+	R.SetM(0, 1, 2*(q[0]*q[1] - q[2]*q[3])/k);
+	R.SetM(0, 2, 2*(q[0]*q[2] + q[1]*q[3])/k);
+	R.SetM(1, 0, 2*(q[0]*q[1] + q[2]*q[3])/k);
+	R.SetM(1, 1, (- q[0]*q[0] + q[1]*q[1] - q[2]*q[2] + q[3]*q[3])/k);
+	R.SetM(1, 2, 2*(q[1]*q[2] - q[0]*q[3])/k);
+	R.SetM(2, 0, 2*(q[0]*q[2] - q[1]*q[3])/k);
+	R.SetM(2, 1, 2*(q[1]*q[2] + q[0]*q[3])/k);
+	R.SetM(2, 2, (- q[0]*q[0] - q[1]*q[1] + q[2]*q[2] + q[3]*q[3])/k);
 
 	return (R);
+}
+
+void Quaternion::SetQ(int i, double value)
+{
+	q[i] = value;
+}
+
+double Quaternion::GetQ(int i) const
+{
+	return q[i];
 }

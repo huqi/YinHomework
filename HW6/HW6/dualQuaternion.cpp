@@ -13,8 +13,7 @@ DualQuaternion::DualQuaternion(Quaternion& real, Vector& translation)
 	Quaternion R;
 	R =  0.5 * (d * real);
 	for( int i = 0; i < 4; i++ )
-		this->dual[i].SetupDual(real.q[i], R.q[i]);
-
+		this->dual[i].SetupDual(real.GetQ(i), R.GetQ(i));
 }
 
 
@@ -22,7 +21,7 @@ DualQuaternion::DualQuaternion(Quaternion& real, Vector& translation)
 DualQuaternion::DualQuaternion(const Quaternion& real, const Quaternion& dual)
 {
 	for( int i = 0; i < 4; i++ )
-		this->dual[i].SetupDual(real.q[i], dual.q[i]);
+		this->dual[i].SetupDual(real.GetQ(i), dual.GetQ(i));
 
 }
 
@@ -267,16 +266,16 @@ DualQuaternion operator/( DualQuaternion& arg1, DualQuaternion& arg2 )
 	DualQuaternion res;
 
 	for( int i = 0; i < 4; i ++ )
-		deno += ( arg2.dual[i]*arg2.dual[i] ).GetReal();
+		deno += ( arg2[i]*arg2[i] ).GetReal();
 
-	res.dual[0] = ( arg1.dual[0]*arg2.dual[3] - arg1.dual[3]*arg2.dual[0]
-		+ arg1.dual[2]*arg2.dual[1] - arg1.dual[1]*arg2.dual[2] ) / deno;
-	res.dual[1] = ( arg1.dual[1]*arg2.dual[3] - arg1.dual[3]*arg2.dual[1]
-		+ arg1.dual[0]*arg2.dual[2] - arg1.dual[2]*arg2.dual[0] ) / deno;
-	res.dual[2] = ( arg1.dual[2]*arg2.dual[3] - arg1.dual[3]*arg2.dual[2]
-		+ arg1.dual[1]*arg2.dual[0] - arg1.dual[0]*arg2.dual[1] ) / deno;
-	res.dual[3] = ( arg1.dual[0]*arg2.dual[0] + arg1.dual[1]*arg2.dual[1]
-		+ arg1.dual[2]*arg2.dual[2] + arg1.dual[3]*arg2.dual[3] ) / deno;
+	res[0] = ( arg1[0]*arg2[3] - arg1[3]*arg2[0]
+		+ arg1[2]*arg2[1] - arg1[1]*arg2[2] ) / deno;
+	res[1] = ( arg1[1]*arg2[3] - arg1[3]*arg2[1]
+		+ arg1[0]*arg2[2] - arg1[2]*arg2[0] ) / deno;
+	res[2] = ( arg1[2]*arg2[3] - arg1[3]*arg2[2]
+		+ arg1[1]*arg2[0] - arg1[0]*arg2[1] ) / deno;
+	res[3] = ( arg1[0]*arg2[0] + arg1[1]*arg2[1]
+		+ arg1[2]*arg2[2] + arg1[3]*arg2[3] ) / deno;
 
 	return res;
 }
@@ -362,6 +361,10 @@ ostream &operator<<(ostream &output, const DualQuaternion & arg)
 	return output;
 }
 
+Dual &DualQuaternion::operator[](int i)
+{
+	return dual[i];
+}
 
 hMatrix DualQuaternion::dualQuaternionToHomogeneousMatrix(void)
 {
@@ -376,12 +379,12 @@ hMatrix DualQuaternion::dualQuaternionToHomogeneousMatrix(void)
 	hMatrix H;
 	for (int i=0; i<3; i++)
 		for (int j=0; j<3; j++)
-			H.m[i][j]=RotMatrix.m[i][j];
+			H.SetM(i, j, RotMatrix.GetM(i, j));
 	for (int i=0; i<3; i++)
-		H.m[i][3]=T.q[i];
+		H.SetM(i, 3, T.GetQ(i));
 	for (int j=0; j<3; j++)
-		H.m[3][j]=0.0;
-	H.m[3][3]=1;
+		H.SetM(3, j, 0.0);
+	H.SetM(3, 3, 1);
 	cout<<"H="<<H<<endl;
 	
 	return H;

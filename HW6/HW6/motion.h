@@ -14,9 +14,11 @@ public:
 	void readCtrlPositions(char *fileNameArg);
 	void writePositions(char *fileNameArg);
 	virtual void drawCtrlPositions(void);
-		
+	DualQuaternion GetCtrlPosAt(int i);
+	vector<DualQuaternion> GetCtrlPos(void);
+	int GetNunberOfPositions(void);
 
-public:
+private:
 	vector<DualQuaternion> ctrlPos;
 	int numberOfPositions;
 

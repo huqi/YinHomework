@@ -63,6 +63,20 @@ void Motion::writePositions(char *fileNameArg)
 		outFile<<ctrlPos[i]<<endl;
 }
 
+DualQuaternion Motion::GetCtrlPosAt(int i)
+{
+	return ctrlPos.at(i);
+}
+
+vector<DualQuaternion> Motion::GetCtrlPos(void)
+{
+	return ctrlPos;
+}
+
+int Motion::GetNunberOfPositions(void)
+{
+	return numberOfPositions;
+}
 
 void Motion::drawCtrlPositions(void)
 {
@@ -74,7 +88,7 @@ void Motion::drawCtrlPositions(void)
 
 		for (int i1=0; i1<4; i1++)
 			for (int i2=0; i2<4; i2++)
-				MatrixforOpenGLStack[4*i1+i2] =  homogeneousMatricesForCtrlPositions.at(i).m[i1][i2];
+				MatrixforOpenGLStack[4*i1+i2] =  homogeneousMatricesForCtrlPositions.at(i).GetM(i1, i2);
 			
 		::glPushMatrix();
 		::glMultMatrixd(MatrixforOpenGLStack);

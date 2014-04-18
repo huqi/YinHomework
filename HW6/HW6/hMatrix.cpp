@@ -547,3 +547,24 @@ void Matrix::DeleteSpace( )
 
 	return;
 }
+
+
+void hMatrix::SetM(int i, int j, double value)
+{
+	m[i][j] = value;
+}
+
+double hMatrix::GetM(int i, int j)
+{
+	return m[i][j];
+}
+
+void Matrix::SetM(int i, int j, double value)
+{
+	m[i][j] = value;
+}
+
+double Matrix::GetM(int i, int j) const
+{
+	return m[i][j];
+}

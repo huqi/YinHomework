@@ -9,9 +9,6 @@
 class DualQuaternion		//define a quaternion
 {
 public:
-	Dual dual[4];
-
-public:
 	DualQuaternion(Quaternion& ,  Vector&);
 	DualQuaternion( double re[4], double du[4] );
 	DualQuaternion(const Quaternion&, const Quaternion&);
@@ -42,6 +39,7 @@ public:
 	friend DualQuaternion operator/( double, DualQuaternion& );
 	friend DualQuaternion operator/( DualQuaternion&, Dual& );
 	DualQuaternion& operator=( DualQuaternion );
+	Dual &operator[](int i);
 
 	void   Clear();		//make all the member of dual 0
 
@@ -52,6 +50,8 @@ public:
 	Quaternion GetDual( ) const;		//create a quaternion from the dual part of this quaternion
 	hMatrix dualQuaternionToHomogeneousMatrix(void);
 	void Print();
+private:
+	Dual dual[4];
 };
 
 #endif

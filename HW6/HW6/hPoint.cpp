@@ -208,13 +208,13 @@ hPoint hPoint::PointTransform( DualQuaternion Q )
 
 	for( int i = 0; i < 4; i ++ )
 	{
-		QQ.dual[i].SetupDual( Q.dual[i].GetReal(), 0 );
-		QR.dual[i].SetupDual( Q.dual[i].GetDual(), 0 );
+		QQ[i].SetupDual( Q[i].GetReal(), 0 );
+		QR[i].SetupDual( Q[i].GetDual(), 0 );
 	}
 
 	DualQuaternion qq = QQ*hp*QQ.Conjugate( )+QR*QQ.Conjugate()-QQ*QR.Conjugate();
 
-	hPoint hpp(qq.dual[0].GetReal(), qq.dual[1].GetReal(), qq.dual[2].GetReal(), qq.dual[3].GetReal() );
+	hPoint hpp(qq[0].GetReal(), qq[1].GetReal(), qq[2].GetReal(), qq[3].GetReal() );
 	hpp.PointNormalize( );
 
 	return hpp;
@@ -227,15 +227,15 @@ Plane hPoint::PlaneTransform( DualQuaternion Q )
 
 	for( int i = 0; i < 4; i ++ )
 	{
-		QQ.dual[i].SetupDual( Q.dual[i].GetReal(), 0 );
-		QR.dual[i].SetupDual( Q.dual[i].GetDual(), 0 );
+		QQ[i].SetupDual( Q[i].GetReal(), 0 );
+		QR[i].SetupDual( Q[i].GetDual(), 0 );
 	}
 
 	Vector M( hp.coord[0], hp.coord[1], hp.coord[2], 0 );
 
 	DualQuaternion qq = QQ*hp*QQ.Conjugate( )+QR*M*QQ.Conjugate()-QQ*M*QR.Conjugate();
 
-	hPoint hpp(qq.dual[0].GetReal(), qq.dual[1].GetReal(), qq.dual[2].GetReal(), qq.dual[3].GetReal() );
+	hPoint hpp(qq[0].GetReal(), qq[1].GetReal(), qq[2].GetReal(), qq[3].GetReal() );
 	hpp.PlaneNormalize( );
 
 	return hpp;

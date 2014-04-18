@@ -5,10 +5,6 @@
 
 class Dual
 {
-protected:
-	double real;
-	double dual;
-
 public:
 	Dual() { real = 1.0f; dual = 0.0f; } //changed default value to 1.0 for real part and 0.0 for dual
 	Dual( double re ) { real = re; dual = 0.0; };
@@ -34,6 +30,10 @@ public:
 	friend Dual operator/( const Dual&, double );
 	friend Dual operator/( double, const Dual& );
 	Dual& operator=( Dual );
+
+private:
+	double real;
+	double dual;
 };
 
 #endif

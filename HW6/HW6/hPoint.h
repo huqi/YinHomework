@@ -15,11 +15,6 @@ using namespace std;
 class Point
 {
 public:
-	double	coord[3];
-	double	normal[3];
-	bool	visible;
-
-public:
 	Point() { for( int i = 0; i < 3; i ++ )	coord[i] = 0.0f; }
 	Point( double x, double y, double z )	{ coord[0] = x; coord[1] = y; coord[2] = z; }
 
@@ -33,6 +28,10 @@ public:
 	Point&	operator=( Point );
 
 	void Normalize( );
+private:
+	double	coord[3];
+	double	normal[3];
+	bool	visible;
 };
 
 //homogeneous representation of a point or a plane

@@ -13,9 +13,6 @@ class Point;
 class hMatrix
 {
 public:
-	double m[4][4];
-
-public:
 	hMatrix();
 	friend hMatrix operator+( const hMatrix&, const hMatrix& );
 	friend hMatrix operator-( const hMatrix&, const hMatrix& );
@@ -30,16 +27,15 @@ public:
 	void   Clear();
 	hMatrix Inverse( );		// return the inverse of a 4*4 matrix
 	hMatrix transpose();
+	void SetM(int i, int j, double value);
+	double GetM(int i, int j);
+private:
+	double m[4][4];
 };
 
 // any arbitrary matrix
 class Matrix
 {
-public:
-	int row;
-	int column;
-	double **m;
-
 public:
 	Matrix();
 	Matrix( int, int );
@@ -58,6 +54,12 @@ public:
 
 	bool   MallocSpace( );
 	void   DeleteSpace( );
+	void SetM(int i, int j, double value);
+	double GetM(int i, int j) const;
+private:
+	int row;
+	int column;
+	double **m;
 };
 
 

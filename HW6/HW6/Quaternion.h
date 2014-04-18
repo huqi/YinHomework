@@ -10,9 +10,6 @@
 class Quaternion
 {
 public:
-	double q[4];
-
-public:
 	Quaternion(const double re[4]);
 	Quaternion(double r1, double r2, double r3, double r4);
 	Quaternion();
@@ -34,7 +31,10 @@ public:
 	double Modulus();
 	Quaternion Conjugate();
 	Quaternion Inverse();
-
+	void SetQ(int i, double value);
+	double GetQ(int i) const;
+private:
+	double q[4];
 };
 
 #endif
