@@ -74,23 +74,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Google Drive\MEC 510.01 OOP\HW\HW4\HW4 Code\bezier.h" />
-    <ClInclude Include="..\..\..\..\Google Drive\MEC 510.01 OOP\HW\HW6\motion design code\dualNumber.h" />
-    <ClInclude Include="..\..\..\..\Google Drive\MEC 510.01 OOP\HW\HW6\motion design code\dualQuaternion.h" />
-    <ClInclude Include="..\..\..\..\Google Drive\MEC 510.01 OOP\HW\HW6\motion design code\point2D.h" />
-    <ClInclude Include="..\..\..\..\Google Drive\MEC 510.01 OOP\HW\HW6\motion design code\Quaternion.h" />
-    <ClInclude Include="fourBarMechanism.h" />
-    <ClInclude Include="bslpine.h" />
+    <ClCompile Include="bezier.cpp" />
+    <ClCompile Include="bspline.cpp" />
+    <ClCompile Include="dualNumber.cpp" />
+    <ClCompile Include="dualQuaternion.cpp" />
+    <ClCompile Include="fourBarMechanism.cpp" />
+    <ClCompile Include="hMatrix.cpp" />
+    <ClCompile Include="hPoint.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="point2D.cpp" />
+    <ClCompile Include="Quaternion.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Google Drive\MEC 510.01 OOP\HW\HW4\HW4 Code\bezier.cpp" />
-    <ClCompile Include="..\..\..\..\Google Drive\MEC 510.01 OOP\HW\HW6\motion design code\dualNumber.cpp" />
-    <ClCompile Include="..\..\..\..\Google Drive\MEC 510.01 OOP\HW\HW6\motion design code\dualQuaternion.cpp" />
-    <ClCompile Include="..\..\..\..\Google Drive\MEC 510.01 OOP\HW\HW6\motion design code\point2D.cpp" />
-    <ClCompile Include="..\..\..\..\Google Drive\MEC 510.01 OOP\HW\HW6\motion design code\Quaternion.cpp" />
-    <ClCompile Include="fourBarMechanism.cpp" />
-    <ClCompile Include="bspline.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClInclude Include="bezier.h" />
+    <ClInclude Include="bslpine.h" />
+    <ClInclude Include="dualNumber.h" />
+    <ClInclude Include="dualQuaternion.h" />
+    <ClInclude Include="fourBarMechanism.h" />
+    <ClInclude Include="hMatrix.h" />
+    <ClInclude Include="hPoint.h" />
+    <ClInclude Include="point2D.h" />
+    <ClInclude Include="Quaternion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
