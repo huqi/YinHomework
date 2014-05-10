@@ -1,5 +1,9 @@
-/Debug
-*.ncb
+*/*/Debug
+*/*/*/Debug
+*/*/ipch
+*/*/*.ncb
+*/*/*.suo
+*/*/*/*.user
 *.suo
 *.usr
 *.sdf
